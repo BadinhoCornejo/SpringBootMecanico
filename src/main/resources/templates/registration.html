@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrarse</title>
+
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<header>
+    <nav class="generic-navbar">
+        <div class="app-brand">
+            <a href="/admin/home">AUDI SERVICES</a>
+        </div>
+        <div class="app-links">
+            <ul>
+                <li class="link-item">
+                    <a>A1</a>
+                </li>
+                <li class="link-item">
+                    <a>Q7</a>
+                </li>
+                <li class="link-item">
+                    <a>R8</a>
+                </li>
+            </ul>
+        </div>
+        <div class="app-actions">
+
+        </div>
+    </nav>
+</header>
+
+<div class="main-container">
+    <form th:action="@{/login}" method="get" style="align-self: center; margin-top: 50px;">
+        <button class="btn generic-btn" type="Submit">REGRESAR</button>
+    </form>
+    <div class="card text-black" style="max-width: 20rem; align-self: center">
+        <div class="card-header text-center">¡Úntene a nosotros!</div>
+        <div class="card-body">
+            <form th:action="@{/registration}" autocomplete="off" th:object="${usuario}" method="post">
+                <div class="form-group">
+                    <input class="form-control" style="width: 100%;" type="text" id="username" name="username" autofocus="autofocus" placeholder="Nombre de usuario" th:field="*{username}" /> <br />
+                    <label
+                            th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+                            class="validation-message"></label>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" style="width: 100%;" type="password" id="password" name="password" placeholder="Contraseña" th:field="*{password}" /> <br />
+                    <label
+                            th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                            class="validation-message"></label>
+                </div>
+                <input type="hidden" th:field="*{role.roleID}" th:value="${usuario.role.roleID}">
+                <button type="submit" style="width: 100%; align-content: center" class="btn generic-btn">FINALIZAR REGISTRO</button>
+
+                <h2><span class="text-success" th:utext="${successMessage}"></span></h2>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

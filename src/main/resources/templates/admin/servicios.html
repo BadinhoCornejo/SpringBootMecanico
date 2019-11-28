@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de servicios</title>
+
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <script src="https://kit.fontawesome.com/e1143320de.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+
+<header>
+    <nav class="generic-navbar">
+        <div class="app-brand">
+            <a href="/admin/home">AUDI SERVICES</a>
+        </div>
+        <div class="app-links">
+            <ul>
+                <li class="link-item">
+                    <a>A1</a>
+                </li>
+                <li class="link-item">
+                    <a>Q7</a>
+                </li>
+                <li class="link-item">
+                    <a>R8</a>
+                </li>
+            </ul>
+        </div>
+        <div class="app-actions">
+            <a th:href="@{/logout}">Cerrar sesión</a>
+        </div>
+    </nav>
+</header>
+
+<h1 class="text-center text-white mt-4">LISTADO DE SERVICIOS</h1>
+
+<div class="generic-container text-white" style="display: flex">
+    <table id="servicesTable" class="table table-borderless table-striped table-light">
+        <thead>
+        <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Placa</th>
+            <th scope="col">Monto</th>
+            <th scope="col">Opciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="servicio: ${servicios}">
+            <td th:text="${servicio.servicioMecanico.cliente.nombre+' '+servicio.servicioMecanico.cliente.apellido}"></td>
+            <td th:text="${servicio.servicio.nombre}"></td>
+            <td th:text="${servicio.servicioMecanico.fecha}"></td>
+            <td th:text="${servicio.marca}"></td>
+            <td th:text="${servicio.modelo}"></td>
+            <td th:text="${servicio.placa}"></td>
+            <td th:text="${servicio.servicio.monto}"></td>
+            <td>
+                <a style="color: black; font-weight: 100;" th:href="@{|/admin/servicio/editarDetalle/${servicio.servdtID}}"><i class="far fa-edit"></i></a>
+                <span>-</span>
+                <a style="color: black; font-weight: 100;" th:href="@{|/admin/servicio/eliminarServicio/${servicio.servdtID}}"><i class="far fa-trash-alt"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form th:action="@{/admin/servicio/}" method="get" style="width: 100%; display: flex; justify-content: flex-end; margin-top: 16px;">
+        <button class="btn generic-btn" style="align-self: flex-end;" type="Submit">NUEVO SERVICIO</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        $('#servicesTable').DataTable();
+    });
+</script>
+
+</body>
+</html>

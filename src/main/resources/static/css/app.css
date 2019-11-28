@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body{
+    background-image: url(../img/blake-meyer-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+}
+
+/*NAVBAR*/
+
+nav.generic-navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: white;
+    margin-top: 8px;
+}
+
+.app-brand{
+    align-self: flex-start;
+    transition: all .2s ease-in-out;
+    position: fixed;
+}
+
+.app-brand:hover{
+    transform: scale(1.1);
+}
+
+.app-brand a{
+    font-size: 24px;
+    color: white;
+    font-weight: 400;
+}
+
+.app-brand a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.app-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.app-links ul{
+    display: flex;
+    align-self: center;
+    margin-left: 75px;
+}
+
+.app-links li{
+    align-self: center;
+    text-decoration: none;
+    list-style: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 32px;
+}
+
+.app-links li:hover{
+    color: hsla(0,0%,100%,.5);
+}
+
+.app-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-self: flex-end;
+    width: 100px;
+}
+
+.app-actions a{
+    align-self: flex-end;
+    font-size: 16px;
+    color: white;
+}
+
+.app-actions a:hover{
+    text-decoration: none;
+    color: hsla(0,0%,100%,.5);
+}
+
+/*NAVBAR*/
+
+/*BUTTONS*/
+
+button.generic-btn{
+    background-color: #ffffff;
+    border-radius: 16px;
+    color: black;
+}
+
+button.generic-btn:hover{
+    background-color: lightgray;
+    color: black;
+}
+
+button.secundary-btn{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 16px;
+    color: white;
+}
+
+button.secundary-btn:hover{
+    background-color: white;
+    color: black;
+}
+
+/*END-BUTTONS*/
+
+.main-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.generic-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.main-container .card{
+    width: 320px;
+    margin-top: 100px;
+}
+
+.main-container .card-actions{
+    display: flex;
+    flex-direction: column;
+}
+
+.main-container .card-actions a{
+    cursor: pointer;
+}
+
+.main-container .card-actions a.card-link{
+    margin-top: 8px;
+    align-self: center;
+}
+
+.main-container .card-actions a.card-link:hover{
+    text-decoration: underline;
+}
+
+.actions-footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.generic-link{
+    color: black;
+
+}
+.generic-link:hover{
+    color: black;
+}
+.generic-link:hover{
+    text-decoration: underline;
+}
+
+.form-actions{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

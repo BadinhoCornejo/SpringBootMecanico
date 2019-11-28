@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar detalle</title>
+
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<header>
+    <nav class="generic-navbar">
+        <div class="app-brand">
+            <a href="/admin/home">AUDI SERVICES</a>
+        </div>
+        <div class="app-links">
+            <ul>
+                <li class="link-item">
+                    <a>A1</a>
+                </li>
+                <li class="link-item">
+                    <a>Q7</a>
+                </li>
+                <li class="link-item">
+                    <a>R8</a>
+                </li>
+            </ul>
+        </div>
+        <div class="app-actions">
+            <a th:href="@{/logout}">Cerrar sesión</a>
+        </div>
+    </nav>
+</header>
+
+<h1 class="text-center text-white mt-4">AGREGAR DETALLE</h1>
+
+<div class="generic-container mt-4">
+    <div class="card text-black mb-3 row justify-content-center" style="max-width: 70%; align-self: center">
+        <div class="card-header">Servicio mecánico</div>
+        <div class="card-body">
+            <form th:action="@{/admin/servicio/agregarDetalle}" th:object="${detalleServicio}" method="post">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="servicio">Servicio</label>
+                        <select class="form-control" id="servicio" th:field="*{servicio.servicioID}">
+                            <option
+                                    th:each="servicio: ${servicios}"
+                                    th:value="${servicio.servicioID}"
+                                    th:text="${servicio.nombre}"
+                            >
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="marca">Marca</label>
+                        <input type="text"
+                               class="form-control"
+                               id="marca"
+                               th:field="*{marca}"
+                               required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="modelo">Modelo</label>
+                        <input type="text"
+                               class="form-control"
+                               id="modelo"
+                               th:field="*{modelo}"
+                               required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="placa">Placa</label>
+                        <input type="text"
+                               class="form-control"
+                               id="placa"
+                               th:field="*{placa}"
+                               required
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="contenido">Contenido</label>
+
+                        <textarea type="text"
+                                  class="form-control"
+                                  id="contenido"
+                                  rows="3"
+                                  th:field="*{contenido}"
+                                  required
+                        >
+                        </textarea>
+                    </div>
+                    <input type="number"
+                           th:field="*{servicioMecanico.servmcID}"
+                           th:value="${detalleServicio.servicioMecanico.servmcID}"
+                           hidden
+                    >
+                    <div class="form-actions">
+                        <button type="submit" class="btn generic-btn" style="align-self: center;">Guardar detalle</button>
+                        <a class="generic-link ml-4" style="align-self: center;" href="/admin/home">Cancelar</a>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>
